@@ -52,17 +52,32 @@ chmod +x mbox_converter.py mbox_converter.sh
 
 ## Quick Start
 
-### Convert to CSV
+### MBOX to CSV
 ```bash
 python mbox_converter.py convert inbox.mbox --format csv
 ```
 
-### Convert to EML (individual email files)
+### CSV to MBOX (reverse conversion!)
 ```bash
-python mbox_converter.py convert inbox.mbox --format eml --output-dir ./emails
+python mbox_converter.py convert emails.csv --format mbox
 ```
 
-### Batch Convert All MBOX Files
+### EML files to CSV
+```bash
+python mbox_converter.py convert ./eml_folder/ --format csv
+```
+
+### CSV to EML (individual email files)
+```bash
+python mbox_converter.py convert emails.csv --format eml --output-dir ./emails
+```
+
+### TXT to MBOX
+```bash
+python mbox_converter.py convert emails.txt --format mbox
+```
+
+### Batch Convert All Files
 ```bash
 python mbox_converter.py convert ./archive/*.mbox --format csv --output-dir ./converted
 ```
@@ -73,6 +88,11 @@ python mbox_converter.py convert inbox.mbox --format csv \
     --date-after 2023-01-01 \
     --date-before 2024-01-01 \
     --from-pattern "@company.com"
+```
+
+### Show Supported Formats
+```bash
+python mbox_converter.py formats
 ```
 
 ## Command Reference
