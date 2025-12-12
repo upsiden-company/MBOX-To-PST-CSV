@@ -1,0 +1,15 @@
+{
+  "summary": {
+    "files_processed": 1,
+    "total_converted": 2,
+    "errors": 0
+  },
+  "results": [
+    {
+      "input": "test_data.mbox",
+      "output": "./report_test/test_data.csv",
+      "emails_converted": 2,
+      "status": "success"
+    }
+  ]
+}
