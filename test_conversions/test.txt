@@ -1,0 +1,40 @@
+================================================================================
+Email #0
+----------------------------------------
+From: user1@example.com
+To: recipient@example.com
+Cc: 
+Subject: Test Email 1 - Invoice
+Date: Mon, 15 Jan 2024 10:30:00 +0000
+----------------------------------------
+This is the first test email about an invoice.
+Amount: $500.00
+
+
+================================================================================
+Email #1
+----------------------------------------
+From: user2@company.com
+To: recipient@example.com
+Cc: 
+Subject: Meeting Tomorrow
+Date: Tue, 16 Jan 2024 14:45:00 +0000
+----------------------------------------
+Hi,
+Just a reminder about our meeting tomorrow.
+Best regards
+
+
+================================================================================
+Email #2
+----------------------------------------
+From: boss@company.com
+To: team@company.com
+Cc: 
+Subject: Weekly Update
+Date: Wed, 17 Jan 2024 09:00:00 +0000
+----------------------------------------
+Team, please submit your weekly reports.
+Thanks
+
+
