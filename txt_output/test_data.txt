@@ -1,0 +1,76 @@
+================================================================================
+Email #0
+----------------------------------------
+From: user1@example.com
+To: recipient@example.com
+Cc: 
+Subject: Test Email 1 - Invoice
+Date: Mon, 15 Jan 2024 10:30:00 +0000
+----------------------------------------
+This is the first test email about an invoice.
+Amount: $500.00
+
+
+================================================================================
+Email #1
+----------------------------------------
+From: user2@company.com
+To: recipient@example.com
+Cc: 
+Subject: Meeting Tomorrow
+Date: Tue, 16 Jan 2024 14:45:00 +0000
+----------------------------------------
+Hi,
+
+Just a reminder about our meeting tomorrow at 2pm.
+
+Best,
+User 2
+
+
+================================================================================
+Email #2
+----------------------------------------
+From: newsletter@news.com
+To: subscriber@example.com
+Cc: 
+Subject: Weekly Newsletter - January Edition
+Date: Wed, 17 Jan 2024 09:00:00 +0000
+----------------------------------------
+Welcome to our weekly newsletter!
+
+Top Stories:
+1. Tech trends for 2024
+2. Market updates
+3. Featured article
+
+
+================================================================================
+Email #3
+----------------------------------------
+From: boss@company.com
+To: employee@company.com
+Cc: 
+Subject: Important: Project Deadline
+Date: Thu, 18 Jan 2024 16:20:00 +0000
+----------------------------------------
+Please ensure the project is completed by Friday.
+This is urgent.
+
+
+================================================================================
+Email #4
+----------------------------------------
+From: support@vendor.com
+To: customer@example.com
+Cc: 
+Subject: Your Support Ticket #12345
+Date: Fri, 19 Jan 2024 11:15:00 +0000
+----------------------------------------
+Thank you for contacting support.
+Your ticket has been resolved.
+
+Ticket ID: 12345
+Status: Closed
+
+
