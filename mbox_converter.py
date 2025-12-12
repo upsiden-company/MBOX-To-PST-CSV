@@ -164,9 +164,14 @@ class EmailFilter:
         if self.date_after or self.date_before:
             msg_date = parse_date(message.get("date"))
             if msg_date:
-                if self.date_after and msg_date < self.date_after:
+                # Normalize both dates to naive (remove timezone) for comparison
+                msg_date_naive = msg_date.replace(tzinfo=None) if msg_date.tzinfo else msg_date
+                date_after_naive = self.date_after.replace(tzinfo=None) if self.date_after and self.date_after.tzinfo else self.date_after
+                date_before_naive = self.date_before.replace(tzinfo=None) if self.date_before and self.date_before.tzinfo else self.date_before
+                
+                if date_after_naive and msg_date_naive < date_after_naive:
                     return False
-                if self.date_before and msg_date > self.date_before:
+                if date_before_naive and msg_date_naive > date_before_naive:
                     return False
             elif self.date_after or self.date_before:
                 # No date and we have date filters - skip
