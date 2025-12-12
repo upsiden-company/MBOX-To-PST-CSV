@@ -1,6 +1,3 @@
 Index,From,To,Cc,Bcc,Subject,Date,Body,HasAttachment
-0,user1@example.com,recipient@example.com,,,Test Email 1 - Invoice,"Mon, 15 Jan 2024 10:30:00 +0000",This is the first test email about an invoice. Amount: $500.00 ,False
 1,user2@company.com,recipient@example.com,,,Meeting Tomorrow,"Tue, 16 Jan 2024 14:45:00 +0000","Hi,  Just a reminder about our meeting tomorrow at 2pm.  Best, User 2 ",False
-2,newsletter@news.com,subscriber@example.com,,,Weekly Newsletter - January Edition,"Wed, 17 Jan 2024 09:00:00 +0000",Welcome to our weekly newsletter!  Top Stories: 1. Tech trends for 2024 2. Market updates 3. Featured article ,False
 3,boss@company.com,employee@company.com,,,Important: Project Deadline,"Thu, 18 Jan 2024 16:20:00 +0000",Please ensure the project is completed by Friday. This is urgent. ,False
-4,support@vendor.com,customer@example.com,,,Your Support Ticket #12345,"Fri, 19 Jan 2024 11:15:00 +0000",Thank you for contacting support. Your ticket has been resolved.  Ticket ID: 12345 Status: Closed ,False
