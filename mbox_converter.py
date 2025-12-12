@@ -612,7 +612,7 @@ def cmd_convert(args) -> int:
     
     # Summary
     if not args.quiet:
-        print(f"\n=== CONVERSION COMPLETE ===")
+        print("\n=== CONVERSION COMPLETE ===")
         print(f"Files processed: {len(mbox_files)}")
         print(f"Total emails converted: {total_converted}")
         if errors:
@@ -939,7 +939,7 @@ Exit Codes:
     
     # === LEGACY MODE (backward compatibility) ===
     # Support old-style: mbox_converter.py input.mbox --csv output.csv
-    if len(sys.argv) > 1 and not sys.argv[1] in ["convert", "info", "list", "config", "-h", "--help", "--version"]:
+    if len(sys.argv) > 1 and sys.argv[1] not in ["convert", "info", "list", "config", "-h", "--help", "--version"]:
         # Legacy mode
         legacy_parser = argparse.ArgumentParser(description="MBOX Converter (Legacy Mode)")
         legacy_parser.add_argument("mbox", help="Input MBOX file")
