@@ -1,0 +1,3 @@
+Index,From,To,Cc,Bcc,Subject,Date,Body,HasAttachment
+2,newsletter@news.com,subscriber@example.com,,,Weekly Newsletter - January Edition,"Wed, 17 Jan 2024 09:00:00 +0000",Welcome to our weekly newsletter!  Top Stories: 1. Tech trends for 2024 2. Market updates 3. Featured article ,False
+3,boss@company.com,employee@company.com,,,Important: Project Deadline,"Thu, 18 Jan 2024 16:20:00 +0000",Please ensure the project is completed by Friday. This is urgent. ,False
