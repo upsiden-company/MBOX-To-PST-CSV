@@ -1,2 +1,4 @@
 # required dependencies
 pywin32; platform_system == "Windows"
+tqdm>=4.65.0
+python-dateutil>=2.8.2
