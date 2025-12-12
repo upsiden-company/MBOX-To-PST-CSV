@@ -101,9 +101,10 @@ python mbox_converter.py formats
 
 | Command | Description |
 |---------|-------------|
-| `convert` | Convert MBOX files to CSV/PST/EML/TXT |
-| `info` | Display MBOX file statistics |
+| `convert` | Convert between any email formats (bidirectional) |
+| `info` | Display file statistics (works with all formats) |
 | `list` | List emails with optional filtering |
+| `formats` | Show conversion matrix and supported formats |
 | `config` | Generate sample configuration file |
 
 ### Convert Options
