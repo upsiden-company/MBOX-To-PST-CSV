@@ -1,8 +1,0 @@
-From: user1@example.com
-To: recipient@example.com
-Subject: Test Email 1 - Invoice
-Date: Mon, 15 Jan 2024 10:30:00 +0000
-Content-Type: text/plain; charset=utf-8
-
-This is the first test email about an invoice.
-Amount: $500.00

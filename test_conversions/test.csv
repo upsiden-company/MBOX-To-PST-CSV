@@ -1,4 +1,0 @@
-Index,From,To,Cc,Bcc,Subject,Date,Body,HasAttachment
-0,user1@example.com,recipient@example.com,,,Test Email 1 - Invoice,"Mon, 15 Jan 2024 10:30:00 +0000",This is the first test email about an invoice. Amount: $500.00 ,False
-1,user2@company.com,recipient@example.com,,,Meeting Tomorrow,"Tue, 16 Jan 2024 14:45:00 +0000","Hi, Just a reminder about our meeting tomorrow. Best regards ",False
-2,boss@company.com,team@company.com,,,Weekly Update,"Wed, 17 Jan 2024 09:00:00 +0000","Team, please submit your weekly reports. Thanks ",False
