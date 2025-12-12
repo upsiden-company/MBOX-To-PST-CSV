@@ -1,19 +1,36 @@
-# MBOX Converter v2.0
+# MBOX Converter v3.0
 
-A powerful, cross-platform command-line tool for converting Mozilla MBOX files to CSV, PST, EML, or TXT formats. Features batch processing, email filtering, progress reporting, and full shell integration.
+A powerful, cross-platform command-line tool for **bidirectional conversion** between email formats: MBOX, CSV, EML, TXT, and PST. Features batch processing, email filtering, progress reporting, and full shell integration.
 
 **Works on:** Windows, Linux, macOS, and cloud environments
 
 ## Features
 
-- **Multiple Output Formats:** CSV, PST (Windows+Outlook), EML (individual files), TXT
-- **Batch Processing:** Convert multiple files with wildcards (`*.mbox`) or directory scanning
+- **Universal Conversion:** Convert ANY format to ANY other format (MBOX ↔ CSV ↔ EML ↔ TXT ↔ PST)
+- **Format Auto-Detection:** Automatically detects input format from file extension or content
+- **Batch Processing:** Convert multiple files with wildcards (`*.mbox`, `*.csv`) or directory scanning
 - **Email Filtering:** Filter by date range, sender, recipient, subject (regex), body content
 - **Progress Reporting:** Real-time progress bars with `tqdm`
 - **Logging:** Configurable verbosity and file logging
 - **Cross-Platform:** Python-based with shell wrappers for Windows (BAT/PowerShell) and Unix (Bash)
 - **Backward Compatible:** Supports legacy command syntax
 - **Structured Output:** JSON reports and exit codes for scripting
+
+## Conversion Matrix
+
+All formats can convert to any other format:
+
+```
+FROM ↓  →  TO →   MBOX   CSV    EML    TXT    PST
+─────────────────────────────────────────────────
+MBOX              -      ✓      ✓      ✓      ✓*
+CSV               ✓      -      ✓      ✓      ✓*
+EML               ✓      ✓      -      ✓      ✓*
+TXT               ✓      ✓      ✓      -      ✓*
+PST*              ✓      ✓      ✓      ✓      -
+
+* PST requires Windows with Microsoft Outlook installed
+```
 
 ## Requirements
 
