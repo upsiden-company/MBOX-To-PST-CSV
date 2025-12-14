@@ -1,0 +1,65 @@
+{
+  "emails": [
+    {
+      "from": "user1@gmail.com",
+      "to": "recipient@company.com",
+      "cc": "",
+      "bcc": "",
+      "subject": "Google Workspace Test",
+      "date": "Mon, 15 Jan 2024 10:30:00 +0000",
+      "message_id": "",
+      "body": "This is a test email from Google Workspace.\n",
+      "html_body": "",
+      "has_attachments": false,
+      "attachments": [],
+      "headers": {
+        "From": "user1@gmail.com",
+        "To": "recipient@company.com",
+        "Subject": "Google Workspace Test",
+        "Date": "Mon, 15 Jan 2024 10:30:00 +0000",
+        "Content-Type": "text/plain; charset=utf-8"
+      }
+    },
+    {
+      "from": "user2@outlook.com",
+      "to": "recipient@company.com",
+      "cc": "",
+      "bcc": "",
+      "subject": "Outlook 365 Test",
+      "date": "Tue, 16 Jan 2024 14:45:00 +0000",
+      "message_id": "",
+      "body": "This is a test from Microsoft 365.\n",
+      "html_body": "",
+      "has_attachments": false,
+      "attachments": [],
+      "headers": {
+        "From": "user2@outlook.com",
+        "To": "recipient@company.com",
+        "Subject": "Outlook 365 Test",
+        "Date": "Tue, 16 Jan 2024 14:45:00 +0000",
+        "Content-Type": "text/plain; charset=utf-8"
+      }
+    },
+    {
+      "from": "newsletter@example.com",
+      "to": "subscriber@company.com",
+      "cc": "",
+      "bcc": "",
+      "subject": "Weekly Newsletter",
+      "date": "Wed, 17 Jan 2024 09:00:00 +0000",
+      "message_id": "",
+      "body": "Newsletter content here.\n",
+      "html_body": "",
+      "has_attachments": false,
+      "attachments": [],
+      "headers": {
+        "From": "newsletter@example.com",
+        "To": "subscriber@company.com",
+        "Subject": "Weekly Newsletter",
+        "Date": "Wed, 17 Jan 2024 09:00:00 +0000",
+        "Content-Type": "text/plain; charset=utf-8"
+      }
+    }
+  ],
+  "count": 3
+}
