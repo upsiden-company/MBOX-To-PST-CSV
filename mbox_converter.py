@@ -875,6 +875,10 @@ def write_to_maildir(
     encoding: str = "utf-8",
 ) -> int:
     """Write emails to Maildir directory."""
+    # Ensure Maildir structure exists
+    for subdir in ["cur", "new", "tmp"]:
+        os.makedirs(os.path.join(output_path, subdir), exist_ok=True)
+    
     md = mailbox.Maildir(output_path, create=True)
     count = 0
     
