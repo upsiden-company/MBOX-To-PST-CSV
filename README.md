@@ -1,354 +1,288 @@
-# MBOX Converter v3.0
+# Email Converter v4.0
 
-A powerful, cross-platform command-line tool for **bidirectional conversion** between email formats: MBOX, CSV, EML, TXT, and PST. Features batch processing, email filtering, progress reporting, and full shell integration.
+**Universal Email Migration Tool** - Convert between ALL major email formats with easy-to-use migration presets.
 
 **Works on:** Windows, Linux, macOS, and cloud environments
 
+## Supported Formats (8 Total)
+
+| Format | Extension | Read | Write | Description |
+|--------|-----------|------|-------|-------------|
+| **MBOX** | .mbox | ✓ | ✓ | Mozilla Thunderbird, Google Takeout |
+| **CSV** | .csv | ✓ | ✓ | Spreadsheet (Excel, Google Sheets) |
+| **EML** | .eml/* | ✓ | ✓ | RFC 822 Standard Email Files |
+| **MSG** | .msg/* | ✓ | ✓ | Microsoft Outlook Individual Messages |
+| **TXT** | .txt | ✓ | ✓ | Plain Text (Human Readable) |
+| **PST** | .pst | ✓ | ✓ | Outlook Personal Storage (Windows) |
+| **JSON** | .json | ✓ | ✓ | Structured Data (API/Programming) |
+| **Maildir** | folder/ | ✓ | ✓ | Unix Mail Directory (Dovecot/Postfix) |
+
+**All formats can convert to any other format!**
+
+## Easy Migration Presets
+
+Built-in presets for common email migrations:
+
+| Preset | Description |
+|--------|-------------|
+| `google-to-365` | Google Workspace → Microsoft 365 |
+| `thunderbird-to-outlook` | Thunderbird → Outlook |
+| `outlook-to-thunderbird` | Outlook → Thunderbird |
+| `apple-to-outlook` | Apple Mail → Outlook |
+| `yahoo-to-gmail` | Yahoo/AOL → Gmail |
+| `outlook-to-gmail` | Outlook → Gmail |
+| `eml-to-outlook` | EML Files → Outlook |
+| `backup-to-csv` | Any Format → CSV for archiving |
+| `maildir-to-mbox` | Unix Maildir → MBOX |
+| `mbox-to-maildir` | MBOX → Unix Maildir |
+
+## Quick Start
+
+### Easy Migrations (Recommended)
+
+```bash
+# Google Workspace to Microsoft 365
+python mbox_converter.py migrate google-to-365 ./Takeout/*.mbox -o ./for_outlook
+
+# Thunderbird to Outlook
+python mbox_converter.py migrate thunderbird-to-outlook ./Inbox -o ./outlook_import
+
+# Backup all emails to CSV
+python mbox_converter.py migrate backup-to-csv ./emails/* -o ./backup
+```
+
+### Direct Conversions
+
+```bash
+# MBOX to CSV
+python mbox_converter.py convert inbox.mbox --format csv
+
+# CSV to MBOX
+python mbox_converter.py convert emails.csv --format mbox
+
+# EML files to JSON
+python mbox_converter.py convert ./eml_folder/ --format json
+
+# JSON to EML files
+python mbox_converter.py convert emails.json --format eml
+
+# MBOX to Maildir (for Unix servers)
+python mbox_converter.py convert inbox.mbox --format maildir
+```
+
+### Show Available Options
+
+```bash
+# Show all supported formats
+python mbox_converter.py formats
+
+# Show all migration presets
+python mbox_converter.py presets
+
+# Show help
+python mbox_converter.py --help
+```
+
 ## Features
 
-- **Universal Conversion:** Convert ANY format to ANY other format (MBOX ↔ CSV ↔ EML ↔ TXT ↔ PST)
-- **Format Auto-Detection:** Automatically detects input format from file extension or content
-- **Batch Processing:** Convert multiple files with wildcards (`*.mbox`, `*.csv`) or directory scanning
-- **Email Filtering:** Filter by date range, sender, recipient, subject (regex), body content
-- **Progress Reporting:** Real-time progress bars with `tqdm`
-- **Logging:** Configurable verbosity and file logging
-- **Cross-Platform:** Python-based with shell wrappers for Windows (BAT/PowerShell) and Unix (Bash)
-- **Backward Compatible:** Supports legacy command syntax
-- **Structured Output:** JSON reports and exit codes for scripting
-
-## Conversion Matrix
-
-All formats can convert to any other format:
-
-```
-FROM ↓  →  TO →   MBOX   CSV    EML    TXT    PST
-─────────────────────────────────────────────────
-MBOX              -      ✓      ✓      ✓      ✓*
-CSV               ✓      -      ✓      ✓      ✓*
-EML               ✓      ✓      -      ✓      ✓*
-TXT               ✓      ✓      ✓      -      ✓*
-PST*              ✓      ✓      ✓      ✓      -
-
-* PST requires Windows with Microsoft Outlook installed
-```
-
-## Requirements
-
-- Python 3.8+
-- For PST conversion: Windows with Microsoft Outlook installed + `pywin32` package
+- **8 Email Formats** - MBOX, CSV, EML, MSG, TXT, PST, JSON, Maildir
+- **Bidirectional Conversion** - Any format to any other format
+- **Easy Migration Presets** - One command for common migrations
+- **Batch Processing** - Convert multiple files with wildcards
+- **Email Filtering** - Filter by date, sender, subject, body content
+- **Progress Bars** - Real-time feedback with tqdm
+- **Format Auto-Detection** - Automatically detects input format
+- **Cross-Platform** - Works on Windows, Linux, macOS, cloud
 
 ## Installation
 
 ```bash
-# Clone or download the repository
-cd mbox-converter
+# Clone or download
+cd email-converter
 
 # Install dependencies
 pip install -r requirements.txt
 
-# Make scripts executable (Linux/macOS)
-chmod +x mbox_converter.py mbox_converter.sh
+# (Linux/macOS) Make executable
+chmod +x mbox_converter.py
 ```
 
-## Quick Start
+### Optional Dependencies
 
-### MBOX to CSV
 ```bash
-python mbox_converter.py convert inbox.mbox --format csv
-```
+# For MSG file support
+pip install extract-msg
 
-### CSV to MBOX (reverse conversion!)
-```bash
-python mbox_converter.py convert emails.csv --format mbox
-```
-
-### EML files to CSV
-```bash
-python mbox_converter.py convert ./eml_folder/ --format csv
-```
-
-### CSV to EML (individual email files)
-```bash
-python mbox_converter.py convert emails.csv --format eml --output-dir ./emails
-```
-
-### TXT to MBOX
-```bash
-python mbox_converter.py convert emails.txt --format mbox
-```
-
-### Batch Convert All Files
-```bash
-python mbox_converter.py convert ./archive/*.mbox --format csv --output-dir ./converted
-```
-
-### Filter by Date and Sender
-```bash
-python mbox_converter.py convert inbox.mbox --format csv \
-    --date-after 2023-01-01 \
-    --date-before 2024-01-01 \
-    --from-pattern "@company.com"
-```
-
-### Show Supported Formats
-```bash
-python mbox_converter.py formats
+# For PST support (Windows only)
+pip install pywin32
 ```
 
 ## Command Reference
 
-### Subcommands
+### Convert Command
 
-| Command | Description |
-|---------|-------------|
-| `convert` | Convert between any email formats (bidirectional) |
-| `info` | Display file statistics (works with all formats) |
-| `list` | List emails with optional filtering |
-| `formats` | Show conversion matrix and supported formats |
-| `config` | Generate sample configuration file |
-
-### Convert Options
-
-```
-Usage: mbox_converter.py convert [OPTIONS] INPUT [INPUT ...]
-
-Arguments:
-  INPUT                    MBOX file(s), glob patterns (*.mbox), or directories
+```bash
+python mbox_converter.py convert <input> --format <format> [options]
 
 Options:
-  -f, --format {csv,pst,eml,txt}  Output format (default: csv)
-  -o, --output-dir PATH           Output directory
-  -e, --encoding ENCODING         Email encoding (default: utf-8)
-  --dry-run                       Preview without writing files
-  -p, --progress                  Show progress bar
-  -q, --quiet                     Suppress output (errors only)
-  -v, --verbose                   Increase verbosity (-v, -vv)
-  --log-file PATH                 Write logs to file
-  --report PATH                   Write JSON conversion report
+  --format, -f    Output format (mbox/csv/eml/msg/txt/pst/json/maildir)
+  --output-dir    Output directory
+  --progress, -p  Show progress bar
+  --dry-run       Preview without converting
+  --encoding      Character encoding (default: utf-8)
 
-Filtering Options:
-  --date-after DATE               Only include emails after date (YYYY-MM-DD)
-  --date-before DATE              Only include emails before date
-  --from-pattern REGEX            Filter by sender (regex)
-  --to-pattern REGEX              Filter by recipient (regex)
-  --subject-pattern REGEX         Filter by subject (regex)
-  --body-contains TEXT            Filter by body content
-  --has-attachment [true|false]   Filter by attachment presence
+Filtering:
+  --date-after    Only emails after date (YYYY-MM-DD)
+  --date-before   Only emails before date
+  --from-pattern  Filter by sender (regex)
+  --to-pattern    Filter by recipient (regex)
+  --subject-pattern  Filter by subject (regex)
+  --body-contains Filter by body content
+  --exclude-pattern  Exclude emails matching pattern
+  --has-attachment   Filter by attachment presence
+```
+
+### Migrate Command
+
+```bash
+python mbox_converter.py migrate <preset> <input> [options]
+
+Presets:
+  google-to-365, thunderbird-to-outlook, outlook-to-thunderbird,
+  apple-to-outlook, yahoo-to-gmail, outlook-to-gmail, eml-to-outlook,
+  backup-to-csv, maildir-to-mbox, mbox-to-maildir
 ```
 
 ### Info Command
 
 ```bash
-# Get statistics about MBOX file
+# Get file statistics
 python mbox_converter.py info inbox.mbox
 
-# Output as JSON
+# JSON output
 python mbox_converter.py info inbox.mbox --json
-```
-
-Output:
-```
-=== inbox.mbox ===
-  Total emails: 1,234
-  Unique senders: 89
-  With attachments: 156
-  File size: 45.6 MB
-  Date range: 2020-01-15 to 2024-03-22
 ```
 
 ### List Command
 
 ```bash
-# List recent emails
-python mbox_converter.py list inbox.mbox --limit 20
-
-# Search for specific emails
-python mbox_converter.py list inbox.mbox --subject-pattern "invoice" --from-pattern "@vendor.com"
-
-# Output as JSON for scripting
-python mbox_converter.py list inbox.mbox --json --limit 50
-```
-
-## Platform-Specific Usage
-
-### Windows (CMD)
-
-```cmd
-REM Using batch script (auto-installs Python if needed)
-run_converter.bat convert inbox.mbox --format csv
-
-REM Direct Python
-python mbox_converter.py convert inbox.mbox --format pst
-```
-
-### Windows (PowerShell)
-
-```powershell
-# Import module
-Import-Module ./MboxConverter.ps1
-
-# Convert with pipeline
-Get-ChildItem *.mbox | Convert-MBox -Format csv -OutputDirectory ./output
-
-# Get info
-Get-MBoxInfo -Path inbox.mbox
+# List emails
+python mbox_converter.py list inbox.mbox --limit 50
 
 # Search emails
-Get-MBoxEmails -Path inbox.mbox -SubjectPattern "invoice" -Limit 50
+python mbox_converter.py list inbox.mbox --subject-pattern "invoice"
 ```
-
-### Linux / macOS (Bash)
-
-```bash
-# Using shell wrapper
-./mbox_converter.sh convert inbox.mbox --format csv
-
-# Direct Python
-python3 mbox_converter.py convert ./emails/*.mbox --format eml -p
-
-# Pipeline with find
-find /archives -name "*.mbox" -exec python3 mbox_converter.py convert {} --format csv \;
-```
-
-### Cloud / CI/CD
-
-```yaml
-# GitHub Actions example
-- name: Convert MBOX archives
-  run: |
-    pip install tqdm python-dateutil
-    python mbox_converter.py convert ./data/*.mbox --format csv --output-dir ./csv-exports --report report.json
-```
-
-## Output Formats
-
-### CSV
-Standard comma-separated values with headers:
-```
-Index,From,To,Cc,Bcc,Subject,Date,Body,HasAttachment
-```
-
-### EML
-Individual `.eml` files per email, named: `000001_Subject_Here.eml`
-
-### TXT
-Plain text file with all emails separated by delimiters, includes headers and body.
-
-### PST (Windows Only)
-Outlook Personal Storage Table format. Requires:
-- Microsoft Outlook installed
-- `pywin32` package
-
-## Exit Codes
-
-| Code | Meaning |
-|------|---------|
-| 0 | Success |
-| 1 | Error |
-| 2 | Invalid arguments |
-| 3 | Partial success (some files failed) |
 
 ## Examples
 
-### 1. Basic CSV Conversion
+### 1. Google Workspace → Microsoft 365
+
 ```bash
-python mbox_converter.py convert inbox.mbox --format csv
+# Step 1: Export from Google Takeout (creates MBOX files)
+# Step 2: Convert to Outlook-compatible format
+python mbox_converter.py migrate google-to-365 ./Takeout/*.mbox -o ./for_outlook
 ```
 
-### 2. Batch Processing with Progress
+### 2. Thunderbird → Outlook
+
 ```bash
-python mbox_converter.py convert ./archives/*.mbox --format eml --output-dir ./exported -p
+# Find Thunderbird profile folder and convert
+python mbox_converter.py migrate thunderbird-to-outlook \
+    "~/.thunderbird/profile/ImapMail/imap.gmail.com/INBOX" \
+    -o ./outlook_import
 ```
 
-### 3. Filter Recent Emails from Specific Sender
+### 3. Backup to CSV for Analysis
+
 ```bash
+# Convert any format to CSV for spreadsheet analysis
+python mbox_converter.py migrate backup-to-csv ./emails/* -o ./backup
+
+# With filtering - only last year's emails
 python mbox_converter.py convert inbox.mbox --format csv \
-    --date-after 2024-01-01 \
-    --from-pattern "boss@company.com|ceo@company.com"
+    --date-after 2024-01-01
 ```
 
-### 4. Extract Emails with Attachments
+### 4. Unix Server Migration (Maildir)
+
 ```bash
-python mbox_converter.py convert inbox.mbox --format eml \
-    --has-attachment true \
-    --output-dir ./with-attachments
+# Convert MBOX to Maildir for Dovecot
+python mbox_converter.py convert inbox.mbox --format maildir -o ./maildir
+
+# Convert Maildir back to MBOX
+python mbox_converter.py convert ./maildir --format mbox
 ```
 
-### 5. Search and Export Invoices
+### 5. Batch Processing
+
 ```bash
-python mbox_converter.py convert inbox.mbox --format csv \
-    --subject-pattern "invoice|receipt|payment" \
+# Convert all MBOX files in directory
+python mbox_converter.py convert ./archive/*.mbox --format csv -o ./converted -p
+
+# Convert with filtering
+python mbox_converter.py convert ./emails/* --format json \
+    --from-pattern "@company.com" \
     --date-after 2023-01-01
 ```
 
-### 6. Dry Run Preview
-```bash
-python mbox_converter.py convert ./emails/*.mbox --format csv --dry-run
-```
-Output:
-```
-=== DRY RUN MODE ===
-Would process 5 file(s):
-  - emails/inbox.mbox: 1234 emails (45.6 MB)
-  - emails/sent.mbox: 567 emails (12.3 MB)
-  ...
-```
-
-### 7. Generate Conversion Report
-```bash
-python mbox_converter.py convert inbox.mbox --format csv --report conversion_report.json
-```
-
-## Legacy Mode
-
-For backward compatibility, the original syntax still works:
-```bash
-python mbox_converter.py inbox.mbox --csv output.csv
-python mbox_converter.py inbox.mbox --pst output.pst
-python mbox_converter.py inbox.mbox --eml ./eml-output
-python mbox_converter.py inbox.mbox --txt output.txt
-```
-
-## Building Standalone Executable (Windows)
-
-Create a portable `.exe` that runs without Python:
+### 6. JSON for Programming
 
 ```bash
-python build_exe.py
+# Export to JSON for API/programmatic use
+python mbox_converter.py convert inbox.mbox --format json
+
+# Import JSON back to MBOX
+python mbox_converter.py convert emails.json --format mbox
 ```
 
-This creates `dist/mbox_converter.exe` using PyInstaller.
+## Platform Notes
 
-## Configuration File
+### Windows
+- Full support for all formats including PST and MSG
+- Requires Microsoft Outlook for PST operations
+- Install pywin32: `pip install pywin32`
 
-Generate a sample config for reusable settings:
+### Linux/macOS
+- All formats except PST/MSG native write
+- Can read MSG files with `extract-msg` package
+- EML, MBOX, CSV, TXT, JSON, Maildir fully supported
 
-```bash
-python mbox_converter.py config --generate my_config.json
-```
+### Cloud/CI
+- Use for automated email processing pipelines
+- JSON format ideal for API integration
+- CSV for data analysis workflows
 
 ## Troubleshooting
 
-### "tqdm not found"
+### "pywin32 not found"
 ```bash
-pip install tqdm python-dateutil
+pip install pywin32
 ```
+Note: Only needed for PST/MSG on Windows
 
-### PST conversion fails
-- Ensure Microsoft Outlook is installed
-- Install pywin32: `pip install pywin32`
-- Run as administrator if needed
+### "extract-msg not found"
+```bash
+pip install extract-msg
+```
+Note: Only needed for reading MSG files on non-Windows
 
 ### Unicode errors
-Use the `--encoding` flag:
 ```bash
 python mbox_converter.py convert inbox.mbox --format csv --encoding latin-1
 ```
 
-### Large files are slow
-Use `--progress` to monitor and consider filtering to reduce volume:
+### Large files
+Use progress bar and filtering:
 ```bash
 python mbox_converter.py convert large.mbox --format csv -p --date-after 2023-01-01
+```
+
+## Legacy Mode
+
+For backward compatibility, old syntax still works:
+
+```bash
+python mbox_converter.py inbox.mbox --csv output.csv --mbox copy.mbox --json data.json
 ```
 
 ## License
