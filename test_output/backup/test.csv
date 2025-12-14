@@ -1,4 +1,0 @@
-Index,From,To,Cc,Bcc,Subject,Date,Body,HTML_Body,HasAttachment,Attachments
-0,user1@gmail.com,recipient@company.com,,,Google Workspace Test,"Mon, 15 Jan 2024 10:30:00 +0000",This is a test email from Google Workspace. ,,False,
-1,user2@outlook.com,recipient@company.com,,,Outlook 365 Test,"Tue, 16 Jan 2024 14:45:00 +0000",This is a test from Microsoft 365. ,,False,
-2,newsletter@example.com,subscriber@company.com,,,Weekly Newsletter,"Wed, 17 Jan 2024 09:00:00 +0000",Newsletter content here. ,,False,
