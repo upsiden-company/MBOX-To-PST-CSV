@@ -1,0 +1,27 @@
+From user1@gmail.com Mon Jan 15 10:30:00 2024
+From: user1@gmail.com
+To: recipient@company.com
+Subject: Google Workspace Test
+Date: Mon, 15 Jan 2024 10:30:00 +0000
+Content-Type: text/plain; charset=utf-8
+
+This is a test email from Google Workspace.
+
+From user2@outlook.com Tue Jan 16 14:45:00 2024
+From: user2@outlook.com
+To: recipient@company.com
+Subject: Outlook 365 Test
+Date: Tue, 16 Jan 2024 14:45:00 +0000
+Content-Type: text/plain; charset=utf-8
+
+This is a test from Microsoft 365.
+
+From newsletter@example.com Wed Jan 17 09:00:00 2024
+From: newsletter@example.com
+To: subscriber@company.com
+Subject: Weekly Newsletter
+Date: Wed, 17 Jan 2024 09:00:00 +0000
+Content-Type: text/plain; charset=utf-8
+
+Newsletter content here.
+
