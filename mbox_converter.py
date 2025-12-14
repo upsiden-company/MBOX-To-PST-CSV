@@ -1402,7 +1402,7 @@ def cmd_convert(args) -> int:
             })
     
     if not args.quiet:
-        print(f"\n=== CONVERSION COMPLETE ===")
+        print("\n=== CONVERSION COMPLETE ===")
         print(f"Files processed: {len(input_paths)}")
         print(f"Total emails converted: {total_converted}")
         if errors:
@@ -1470,7 +1470,7 @@ def cmd_migrate(args) -> int:
         except Exception as e:
             logger.error(f"Error: {e}")
     
-    print(f"\n=== Migration Complete ===")
+    print("\n=== Migration Complete ===")
     print(f"Total emails migrated: {total_converted}")
     print(f"Output directory: {output_dir}")
     
